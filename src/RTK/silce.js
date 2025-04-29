@@ -26,3 +26,30 @@ export const pokemonSlice = createSlice({
 }
 
 )
+
+export const favoriteSlice = createSlice({
+  name:'favorite',
+  initialState: [],
+  reducers:{
+    addToFavorite(state, action) {state.push(action.payload)},
+    removeToFavorite(state, action){
+      return state.filter(pokemonId => pokemonId !== action.payload)}
+  }
+})
+
+export const {addToFavorite, removeToFavorite} = favoriteSlice.actions;
+
+export const flipSlice = createSlice({
+  name:'flip',
+  initialState: {},
+  reducers: {
+    toggleFlip: (state, action) => {
+      const id = action.payload;
+      state[id] = !state[id]; 
+    }, 
+    resetFlip: () => ({}),  
+  },
+  }
+)
+
+export const { toggleFlip, resetFlip } = flipSlice.actions;
